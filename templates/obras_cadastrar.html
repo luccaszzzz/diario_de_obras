@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>EngList | Diário de Obras</title>
+    <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
 </head>
 <body>
-    <h1>Lista de Obras</h1>
-    <p>Listagem de obras</p>
-    
-    {% for obras in todas_obras %}
-    <p>Título: {{obras.titulo}}</p>
-    {% empty %}
-    <p>Não existem obras cadastradas</p> 
-        {% endfor %}
+    <h1>Cadastrar Obras</h1>
+    <form method ="post">
+        {% csrf_token %}
+        {{ form_obra }}
+    <p><input type="submit" value="Cadastrar"></p>    
+    </form>
 </body>
 </html>
