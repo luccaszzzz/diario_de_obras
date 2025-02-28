@@ -1,14 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>EngList | Login</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-</head>
-<body>
-    
-</body>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="{% static 'css/login.css' %}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="{% static 'main.js' %}"></script>
+  </head>
+  <body>
+    <div class="container">
+      <img src="{% static 'img/1.png' %}" alt="Englist Logo" class="logo" />
+      <div class="content">
+        <h2 class="title">LOGIN</h2>
+        <form method="POST">
+          {% csrf_token %}
+          <input type="text" name="username" placeholder="Usuário" required />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Senha"
+            required
+          />
+          <p>
+            <label>
+              <input type="checkbox" onclick="togglePassword()" /> Mostrar Senha
+            </label>
+          </p>
+          <button type="submit">Entrar</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      function togglePassword() {
+        var passwordField = document.getElementById("password");
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+        } else {
+          passwordField.type = "password";
+        }
+      }
+    </script>
+  </body>
 </html>
