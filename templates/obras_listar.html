@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EngList | Lista de Obras</title>
+  </head>
+  <body>
+    <h1>Lista de Obras</h1>
+    <a href="{% url 'cadastrar_obras' %}">Cadastrar Nova Obra</a>
+    <ul>
+      {% for obra in todas_obras %}
+      <li>
+        {{ obra.titulo }} - {{ obra.data_obra }}
+        <a href="{% url 'editar_obra' obra.id %}">Editar</a>
+        <a href="{% url 'excluir_obra' obra.id %}">Excluir</a>
+        <a href="{% url 'revisar_obra' obra.id %}">Revisar</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

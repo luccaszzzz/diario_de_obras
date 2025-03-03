@@ -1,9 +1,9 @@
-#CRUD LISTAR E CADASTRAR
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Obra
 from .forms import ObraForm
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
+
 
 def login(request):
     if request.method == "POST":
@@ -12,32 +12,49 @@ def login(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            auth_login(request, user)  # Faz login do usuário
-            
-            if user.is_superuser:  # Verifica se é um administrador
-                auth_login(request, user)  # Faz login do usuário
-                return redirect('home')  # Redireciona para a página inicial do sistema
-        
+            auth_login(request, user)
+            if user.is_superuser:
+                return redirect("listar_obras")
         else:
-            messages.error(request, "Usuário ou senha inválidos.")  # Mensagem de erro
+            messages.error(request, "Usuário ou senha inválidos.")
+    return render(request, "login.html")
 
-    return render(request, 'login.html')
 
 def listar_obras(request):
     obras = Obra.objects.all()
-    contexto={
-        'todas_obras': obras
-    }
-    return render(request, 'home.html', contexto)
+    contexto = {"todas_obras": obras}
+    return render(request, "obras_listar.html", contexto)
 
-def cadastrar_obras(request):   
+
+def cadastrar_obras(request):
     form = ObraForm(request.POST or None)
-
     if form.is_valid():
         form.save()
-        return redirect('listar_obras')
-    
-    contexto = {
-        'form_obra': form
-    }
-    return render(request, 'obras_cadastrar.html', contexto)
+        return redirect("listar_obras")
+    contexto = {"form_obra": form}
+    return render(request, "obras_cadastrar.html", contexto)
+
+
+def editar_obra(request, id):
+    obra = get_object_or_404(Obra, id=id)
+    form = ObraForm(request.POST or None, instance=obra)
+    if form.is_valid():
+        form.save()
+        return redirect("listar_obras")
+    contexto = {"form_obra": form}
+    return render(request, "obras_editar.html", contexto)
+
+
+def excluir_obra(request, id):
+    obra = get_object_or_404(Obra, id=id)
+    if request.method == "POST":
+        obra.delete()
+        return redirect("listar_obras")
+    contexto = {"obra": obra}
+    return render(request, "obras_excluir.html", contexto)
+
+
+def revisar_obra(request, id):
+    obra = get_object_or_404(Obra, id=id)
+    contexto = {"obra": obra}
+    return render(request, "obras_revisar.html", contexto)

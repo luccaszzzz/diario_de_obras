@@ -1,56 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>EngList | Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="{% static 'css/login.css' %}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="{% static 'main.js' %}"></script>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>EngList | Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  {% load static %}
-  <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/login.css' %}" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="{% static 'main.js' %}"></script>
-</head>
+  <body>
+    <div class="container">
+      <img src="{% static 'img/logo_branca.png' %}" alt="Englist Logo" class="logo" />
+      <div class="content">
+        <h2 class="title">LOGIN</h2>
+        <form method="POST">
+          {% csrf_token %} {% if messages %}
+          <div class="messages">
+            {% for message in messages %}
+            <p class="error">{{ message }}</p>
+            {% endfor %}
+          </div>
+          {% endif %}
 
-<body>
-  <div class="container">
-    <img src="{% static 'img/1.png' %}" alt="Englist Logo" class="logo" />
-    <div class="content">
-      <h2 class="title">LOGIN</h2>
-      <form method="POST">
-        {% csrf_token %}
+          <input type="text" name="username" placeholder="Usuário" required />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Senha"
+            required
+          />
 
-        {% if messages %}
-        <div class="messages">
-          {% for message in messages %}
-          <p class="error">{{ message }}</p>
-          {% endfor %}
-        </div>
-        {% endif %}
+          <p class="recuperar">
+            <label>
+              <input type="checkbox" onclick="togglePassword()" /> Mostrar Senha
+            </label>
+          </p>
 
-        <input type="text" name="username" placeholder="Usuário" required />
-        <input type="password" id="password" name="password" placeholder="Senha" required />
-
-        <p class="recuperar">
-          <label>
-            <input type="checkbox" onclick="togglePassword()" /> Mostrar Senha
-          </label>
-        </p>
-
-        <button type="submit">Entrar</button>
-      </form>
+          <button type="submit">Entrar</button>
+        </form>
+      </div>
     </div>
-  </div>
-  <script>
-    function togglePassword() {
-      var passwordField = document.getElementById("password");
-      if (passwordField.type === "password") {
-        passwordField.type = "text";
-      } else {
-        passwordField.type = "password";
+    <script>
+      function togglePassword() {
+        var passwordField = document.getElementById("password");
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+        } else {
+          passwordField.type = "password";
+        }
       }
-    }
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>

@@ -3,14 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EngList | Cadastrar Obra</title>
+    <title>EngList | Revisar Obra</title>
   </head>
   <body>
-    <h1>Cadastrar Nova Obra</h1>
-    <form method="post">
-      {% csrf_token %} {{ form_obra.as_p }}
-      <button type="submit">Salvar</button>
-    </form>
+    <h1>Revisar Obra</h1>
+    <h2>{{ obra.titulo }}</h2>
+    <p>{{ obra.descricao }}</p>
+    <p>Data da Obra: {{ obra.data_obra }}</p>
     <a href="{% url 'listar_obras' %}">Voltar</a>
   </body>
 </html>
