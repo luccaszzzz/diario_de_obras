@@ -54,16 +54,17 @@ body {
   /* Ajuste a altura conforme necessário */
 }
 
+.recuperar-mostrar-senha {
+  margin-top: 0;
+  /* Remove a margem superior */
+}
+
 input {
   padding: 10px;
   margin: 10px 0;
   margin-bottom: 0;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
-
-.recuperar {
-  margin-top: 0;
 }
 
 button {
@@ -73,6 +74,7 @@ button {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  width: 63.5%;
   transition: background-color 0.3s ease;
   /* Adiciona a transição */
 }

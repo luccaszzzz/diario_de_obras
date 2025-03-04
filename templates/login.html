@@ -21,7 +21,11 @@
 
   <body>
     <div class="container">
-      <img src="{% static 'img/logo_branca.png' %}" alt="Englist Logo" class="logo" />
+      <img
+        src="{% static 'img/logo_branca.png' %}"
+        alt="Englist Logo"
+        class="logo"
+      />
       <div class="content">
         <h2 class="title">LOGIN</h2>
         <form method="POST">
@@ -42,7 +46,7 @@
             required
           />
 
-          <p class="recuperar">
+          <p class="recuperar-mostrar-senha">
             <label>
               <input type="checkbox" onclick="togglePassword()" /> Mostrar Senha
             </label>
