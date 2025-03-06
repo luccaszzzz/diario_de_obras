@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from core.views import (
     login,
     listar_obras,
@@ -18,3 +20,6 @@ urlpatterns = [
     path("excluir_obra/<int:id>/", excluir_obra, name="excluir_obra"),
     path("revisar_obra/<int:id>/", revisar_obra, name="revisar_obra"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

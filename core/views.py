@@ -27,7 +27,7 @@ def listar_obras(request):
 
 
 def cadastrar_obras(request):
-    form = ObraForm(request.POST or None)
+    form = ObraForm(request.POST or None, request.FILES or None)	# Adiciona request.FILES para receber arquivos
     if form.is_valid():
         form.save()
         return redirect("listar_obras")
