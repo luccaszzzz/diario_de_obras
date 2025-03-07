@@ -27,7 +27,9 @@ def listar_obras(request):
 
 
 def cadastrar_obras(request):
-    form = ObraForm(request.POST or None, request.FILES or None)	# Adiciona request.FILES para receber arquivos
+    form = ObraForm(
+        request.POST or None, request.FILES or None
+    )  # Adiciona request.FILES para receber arquivos
     if form.is_valid():
         form.save()
         return redirect("listar_obras")
@@ -37,7 +39,7 @@ def cadastrar_obras(request):
 
 def editar_obra(request, id):
     obra = get_object_or_404(Obra, id=id)
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ObraForm(request.POST, request.FILES, instance=obra)
         if form.is_valid():
             form.save()
