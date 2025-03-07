@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from core.views import (
@@ -14,6 +14,7 @@ from core.views import (
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", login, name="login"),
+    path('api/v1/', include('core.urls_api')),
     path("listar_obras/", listar_obras, name="listar_obras"),
     path("cadastrar_obras/", cadastrar_obras, name="cadastrar_obras"),
     path("editar_obra/<int:id>/", editar_obra, name="editar_obra"),

@@ -3,7 +3,10 @@ from .models import Obra
 from .forms import ObraForm
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
-
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .serializers import *
 
 def login(request):
     if request.method == "POST":
@@ -63,3 +66,40 @@ def revisar_obra(request, id):
     obra = get_object_or_404(Obra, id=id)
     contexto = {"obra": obra}
     return render(request, "obras_revisar.html", contexto)
+
+
+
+'''
+============= OBRA API =============
+'''
+
+@api_view(['GET'])
+def obraAPIlistar(request):
+    obras = Obra.objects.all()
+    obra_serializer = ObraSerializer(obras, many=True)
+    return Response(obra_serializer.data)
+
+@api_view(['PUT'])
+def obraAPIadicionar(request):
+    obra = ObraSerializer(data=request.data)
+    if obra.is_valid():
+        obra.save()
+        return Response(obra.data, status=status.HTTP_201_CREATED)
+
+@api_view(['POST'])
+def obraAPIatualizar(request, id):
+    obra_bd = Obra.objects.get(id=id)
+    obra = ObraSerializer(data=request.data,
+                                 instance=obra_bd)
+    if obra.is_valid():
+        obra.save()
+        return Response(obra.data, status=status.HTTP_202_ACCEPTED)
+
+@api_view(['DELETE'])
+def obraAPIremover(request, id):
+    obra_bd = Obra.objects.get(id=id)
+    if obra_bd:
+        obra_bd.delete()
+        return Response(status=status.HTTP_202_ACCEPTED)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
