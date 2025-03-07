@@ -37,10 +37,13 @@ def cadastrar_obras(request):
 
 def editar_obra(request, id):
     obra = get_object_or_404(Obra, id=id)
-    form = ObraForm(request.POST or None, instance=obra)
-    if form.is_valid():
-        form.save()
-        return redirect("listar_obras")
+    if request.method == 'POST':
+        form = ObraForm(request.POST, request.FILES, instance=obra)
+        if form.is_valid():
+            form.save()
+            return redirect("listar_obras")
+    else:
+        form = ObraForm(instance=obra)
     contexto = {"form_obra": form}
     return render(request, "obras_editar.html", contexto)
 
