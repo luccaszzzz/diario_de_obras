@@ -1,0 +1,38 @@
+/* revisar_obras.css */
+
+.obra-container {
+  text-align: center;
+  margin-top: 50px; /* Ajuste o valor conforme necessário */
+}
+
+.obra-container h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.obra-imagem {
+  width: 1920px; /* Ajuste o valor conforme necessário */
+  height: 445px; /* Ajuste o valor conforme necessário */
+  object-fit: cover;
+  margin-bottom: 20px;
+  opacity: 50%; /* Define a opacidade da imagem para 50% */
+}
+
+.obra-container p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.obra-container a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.obra-container a:hover {
+  background-color: #0056b3;
+}
