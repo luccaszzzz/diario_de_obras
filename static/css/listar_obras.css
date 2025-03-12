@@ -1,0 +1,213 @@
+/* listar_obras.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #d9d9d9;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  background-color: #191970;
+  width: 100%;
+  flex-wrap: wrap;
+  position: sticky; /* Mantém a navbar fixa no topo */
+  top: 0; /* Mantém a navbar fixa no topo */
+  z-index: 1000; /* Garante que a navbar fique acima dos cartões */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.logo span {
+  color: #fff;
+  font-size: 20px;
+  margin-left: 10px; /* Afastar o span da logo */
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 10px 0;
+}
+
+.search-bar img {
+  height: 30px;
+  cursor: pointer;
+}
+
+.search-bar input {
+  display: none;
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-buttons img {
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-left: 10px;
+}
+
+.nav-buttons img:hover {
+  transform: scale(1.1);
+}
+
+.board {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.column {
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  padding: 10px;
+  width: 23%; /* Ajuste o valor conforme necessário */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.column h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.column.nao-iniciada h2 {
+  color: #ff5733; /* Cor para Não Iniciada */
+}
+
+.column.em-andamento h2 {
+  color: #33c3ff; /* Cor para Em Andamento */
+}
+
+.column.concluida h2 {
+  color: #28a745; /* Cor para Concluída */
+}
+
+.column.paralisada h2 {
+  color: #ffc107; /* Cor para Paralisada */
+}
+
+.column-separator {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #ccc; /* Cor e estilo da linha separadora */
+  margin: 10px 0; /* Espaçamento acima e abaixo da linha */
+}
+
+.card {
+  background-color: #e3e3e3;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center; /* Alinha a imagem e o texto verticalmente */
+  position: relative; /* Necessário para posicionamento absoluto dos botões */
+}
+
+.card-content {
+  display: flex;
+  align-items: center; /* Alinha a imagem e o texto verticalmente */
+  flex-grow: 1;
+}
+
+.card-image {
+  width: 100px; /* Ajuste o valor conforme necessário */
+  height: 100px; /* Ajuste o valor conforme necessário */
+  object-fit: cover;
+  margin-right: 10px; /* Espaço entre a imagem e o texto */
+}
+
+.card-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-decoration: none; /* Remove o sublinhado do link */
+  color: black; /* Define a cor do texto */
+  transition: transform 0.2s; /* Adiciona uma transição para o efeito de zoom */
+}
+
+.card-title:hover {
+  transform: scale(1.05); /* Aplica o efeito de zoom ao passar o mouse */
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.button-image {
+  width: 20px; /* Ajustar o tamanho conforme necessário */
+  height: 20px; /* Ajustar o tamanho conforme necessário */
+  cursor: pointer;
+}
+
+.edit-button,
+.delete-button {
+  display: inline-block;
+  padding: 0; /* Remover o padding para que a imagem ocupe todo o espaço */
+  border: none; /* Remover a borda */
+  background: none; /* Remover o fundo */
+  position: absolute;
+}
+
+.edit-button {
+  top: 10px; /* Ajuste a distância do topo conforme necessário */
+  right: 10px; /* Ajuste a distância da direita conforme necessário */
+}
+
+.delete-button {
+  bottom: 10px; /* Ajuste a distância da parte inferior conforme necessário */
+  right: 10px; /* Ajuste a distância da direita conforme necessário */
+}
+
+.edit-button img,
+.delete-button img {
+  display: block;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  opacity: 0.8;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .column {
+    width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .column {
+    width: 100%;
+  }
+}

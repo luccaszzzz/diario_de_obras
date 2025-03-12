@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="{% static 'css/listar_obras.css' %}"
+    />
+    <link rel="icon" href="{% static 'img/muro_azul.png' %}" type="image/png" />
+    <title>EngList | Lista de Obras</title>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="logo">
+        <img src="{% static 'img/muro_azul.png' %}" alt="Logo" />
+        <span>Diário de Obras</span>
+      </div>
+      <div class="nav-buttons">
+        <div class="search-bar">
+          <input id="search-input" type="text" placeholder="Pesquisar..." />
+          <img
+            id="search-button"
+            src="{% static 'img/pesquisar.png' %}"
+            alt="Pesquisar"
+          />
+        </div>
+        <a href="{% url 'cadastrar_obras' %}"
+          ><img src="{% static 'img/adicionar.png' %}" alt="Cadastrar Obra"
+        /></a>
+      </div>
+    </nav>
+
+    <div class="board">
+      <div class="column nao-iniciada">
+        <h2>Não Iniciada</h2>
+        <hr class="column-separator" />
+        {% for obra in todas_obras %} {% if obra.status == 'nao-iniciada' %}
+        <div class="card">
+          <div class="card-content">
+            {% if obra.imagem %}
+            <img
+              src="{{ obra.imagem.url }}"
+              alt="{{ obra.titulo }}"
+              class="card-image"
+            />
+            {% endif %}
+            <a href="{% url 'revisar_obra' obra.id %}" class="card-title"
+              >{{ obra.titulo }}</a
+            >
+          </div>
+          <a href="{% url 'editar_obra' obra.id %}" class="edit-button">
+            <img
+              src="{% static 'img/editar.png' %}"
+              alt="Editar"
+              class="button-image"
+            />
+          </a>
+          <form
+            method="post"
+            action="{% url 'excluir_obra' obra.id %}"
+            class="delete-form"
+          >
+            {% csrf_token %}
+            <button type="submit" class="delete-button">
+              <img
+                src="{% static 'img/excluir.png' %}"
+                alt="Excluir"
+                class="button-image"
+              />
+            </button>
+          </form>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+
+      <div class="column em-andamento">
+        <h2>Em Andamento</h2>
+        <hr class="column-separator" />
+        {% for obra in todas_obras %} {% if obra.status == 'em-andamento' %}
+        <div class="card">
+          <div class="card-content">
+            {% if obra.imagem %}
+            <img
+              src="{{ obra.imagem.url }}"
+              alt="{{ obra.titulo }}"
+              class="card-image"
+            />
+            {% endif %}
+            <a href="{% url 'revisar_obra' obra.id %}" class="card-title"
+              >{{ obra.titulo }}</a
+            >
+          </div>
+          <a href="{% url 'editar_obra' obra.id %}" class="edit-button">
+            <img
+              src="{% static 'img/editar.png' %}"
+              alt="Editar"
+              class="button-image"
+            />
+          </a>
+          <form
+            method="post"
+            action="{% url 'excluir_obra' obra.id %}"
+            class="delete-form"
+          >
+            {% csrf_token %}
+            <button type="submit" class="delete-button">
+              <img
+                src="{% static 'img/excluir.png' %}"
+                alt="Excluir"
+                class="button-image"
+              />
+            </button>
+          </form>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+
+      <div class="column concluida">
+        <h2>Concluída</h2>
+        <hr class="column-separator" />
+        {% for obra in todas_obras %} {% if obra.status == 'concluida' %}
+        <div class="card">
+          <div class="card-content">
+            {% if obra.imagem %}
+            <img
+              src="{{ obra.imagem.url }}"
+              alt="{{ obra.titulo }}"
+              class="card-image"
+            />
+            {% endif %}
+            <a href="{% url 'revisar_obra' obra.id %}" class="card-title"
+              >{{ obra.titulo }}</a
+            >
+          </div>
+          <a href="{% url 'editar_obra' obra.id %}" class="edit-button">
+            <img
+              src="{% static 'img/editar.png' %}"
+              alt="Editar"
+              class="button-image"
+            />
+          </a>
+          <form
+            method="post"
+            action="{% url 'excluir_obra' obra.id %}"
+            class="delete-form"
+          >
+            {% csrf_token %}
+            <button type="submit" class="delete-button">
+              <img
+                src="{% static 'img/excluir.png' %}"
+                alt="Excluir"
+                class="button-image"
+              />
+            </button>
+          </form>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+
+      <div class="column paralisada">
+        <h2>Paralisada</h2>
+        <hr class="column-separator" />
+        {% for obra in todas_obras %} {% if obra.status == 'paralisada' %}
+        <div class="card">
+          <div class="card-content">
+            {% if obra.imagem %}
+            <img
+              src="{{ obra.imagem.url }}"
+              alt="{{ obra.titulo }}"
+              class="card-image"
+            />
+            {% endif %}
+            <a href="{% url 'revisar_obra' obra.id %}" class="card-title"
+              >{{ obra.titulo }}</a
+            >
+          </div>
+          <a href="{% url 'editar_obra' obra.id %}" class="edit-button">
+            <img
+              src="{% static 'img/editar.png' %}"
+              alt="Editar"
+              class="button-image"
+            />
+          </a>
+          <form
+            method="post"
+            action="{% url 'excluir_obra' obra.id %}"
+            class="delete-form"
+          >
+            {% csrf_token %}
+            <button type="submit" class="delete-button">
+              <img
+                src="{% static 'img/excluir.png' %}"
+                alt="Excluir"
+                class="button-image"
+              />
+            </button>
+          </form>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

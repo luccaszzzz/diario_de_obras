@@ -1,0 +1,144 @@
+body {
+  background-color: #0f0f4c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  /* Aplica a fonte Roboto ao corpo */
+}
+
+.container {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  gap: 20px;
+  /* Adiciona espaçamento entre os elementos */
+  max-width: 800px;
+  /* Limita a largura máxima do contêiner */
+  width: 100%;
+  /* Garante que o contêiner ocupe 100% da largura disponível */
+}
+
+.content {
+  flex: 1;
+  text-align: center;
+  /* Centraliza o texto */
+  max-width: 300px;
+  /* Limita a largura máxima do formulário */
+  width: 100%;
+  /* Garante que o formulário ocupe 100% da largura disponível */
+  margin: 0 auto;
+  /* Centraliza o formulário dentro do contêiner */
+}
+
+.title {
+  font-family: "Roboto", sans-serif;
+  /* Aplica a fonte Roboto ao título */
+  font-weight: 700;
+  /* Define o peso da fonte como negrito */
+  margin-bottom: 20px;
+  /* Adiciona margem inferior */
+}
+
+.logo {
+  width: 350px;
+  /* Ajuste a largura conforme necessário */
+  height: 350px;
+  /* Ajuste a altura conforme necessário */
+}
+
+.recuperar-mostrar-senha {
+  margin-top: 0;
+  /* Remove a margem superior */
+}
+
+input {
+  padding: 10px;
+  margin: 10px 0;
+  margin-bottom: 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background: #0f0f4c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 63.5%;
+  transition: background-color 0.3s ease;
+  /* Adiciona a transição */
+}
+
+button:hover {
+  background: #ff6b00;
+  /* Altera a cor de fundo para laranja */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    /* Altera a direção do flex para coluna */
+    padding: 30px;
+    /* Aumenta o padding para telas menores */
+    align-items: center;
+    /* Centraliza os itens horizontalmente */
+  }
+
+  .logo {
+    width: 300px;
+    /* Ajuste a largura conforme necessário */
+    height: 300px;
+    /* Ajuste a altura conforme necessário */
+    margin-right: 0;
+    margin-bottom: 20px;
+    /* Adiciona margem inferior */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    /* Altera a direção do flex para coluna */
+    padding: 20px;
+    /* Ajusta o padding para telas menores */
+    align-items: center;
+    /* Centraliza os itens horizontalmente */
+  }
+
+  .logo {
+    width: 250px;
+    /* Ajuste a largura conforme necessário */
+    height: 250px;
+    /* Ajuste a altura conforme necessário */
+    margin-right: 0;
+    margin-bottom: 20px;
+    /* Adiciona margem inferior */
+  }
+
+  .content {
+    width: 100%;
+    max-width: 100%;
+    /* Remove a limitação de largura máxima em telas menores */
+    text-align: center;
+    /* Centraliza o texto */
+  }
+
+  input {
+    padding: 8px;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}
