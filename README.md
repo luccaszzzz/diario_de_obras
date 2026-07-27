@@ -147,8 +147,8 @@ Access at `http://127.0.0.1:8000/`
 
 ## Authors
 
-- Lucas Emanoel da Silva Freitas
-- Júlia Galvão
+- [Lucas Emanoel da Silva Freitas](https://www.linkedin.com/in/lucas-emanoel-38a440238/)
+- [Júlia Galvão](https://www.linkedin.com/in/júlia-galvão-644ab9270/)
 - Allan Bezerra
 - Thalles Hermínio
 
